@@ -1,1 +1,2 @@
-# cypress-automation-sanbercode-final
+# Demoblaze Automation Using Cypress
+Submission for sanbercode final project
