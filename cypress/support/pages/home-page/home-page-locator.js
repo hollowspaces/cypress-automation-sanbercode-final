@@ -13,5 +13,6 @@ module.exports = {
     loginBtn: '//button[normalize-space()="Log in"]',
     nameOfUserTxt: '//a[@id="nameofuser"]',
     logoutBtn: '//a[@id="logout2"]',
-  }, 
+    productTitle: '//a[normalize-space()="Samsung galaxy s6"]',
+  },
 };

@@ -79,6 +79,7 @@ class homePage {
 
   verifyLoginSuccess() {
     cy.xpath(locators.datatestid.nameOfUserTxt).should("be.visible");
+    cy.wait(1000);
   }
 
   clickLogoutBtn() {
@@ -102,7 +103,7 @@ class homePage {
   }
 
   selectProduct() {
-    cy.xpath('//div[@id="tbodyid"]//div[1]//div[1]//a[1]//img[1]').click();
+    cy.xpath(locators.datatestid.productTitle).click();
   }
 }
 
