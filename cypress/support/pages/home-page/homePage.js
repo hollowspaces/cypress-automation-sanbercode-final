@@ -100,6 +100,10 @@ class homePage {
       expect(alertText).to.equal("User does not exist.");
     });
   }
+
+  selectProduct() {
+    cy.xpath('//div[@id="tbodyid"]//div[1]//div[1]//a[1]//img[1]').click();
+  }
 }
 
 module.exports = new homePage();
