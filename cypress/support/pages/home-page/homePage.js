@@ -19,13 +19,15 @@ class homePage {
   }
 
   fillUsername(username) {
-    cy.xpath(locators.datatestid.usernameField).type(username);
-    cy.wait(2000);
+    cy.xpath(locators.datatestid.usernameField, { timeout: 5000 })
+      .should("be.visible")
+      .type(username, { timeout: 5000 });
   }
 
   fillPassword(password) {
-    cy.xpath(locators.datatestid.passwordField).type(password);
-    cy.wait(2000);
+    cy.xpath(locators.datatestid.passwordField, { timeout: 5000 })
+      .should("be.visible")
+      .type(password, { timeout: 5000 });
   }
 
   clickSignUpBtn() {
@@ -35,6 +37,18 @@ class homePage {
   verifyAlertSignUpSuccess() {
     cy.on("window:alert", (alertText) => {
       expect(alertText).to.equal("Sign up successful.");
+    });
+  }
+
+  verifyAlertUserAlreadyExist() {
+    cy.on("window:alert", (alertText) => {
+      expect(alertText).to.equal("This user already exist.");
+    });
+  }
+
+  handlingEmptyUsernameAndPasswords() {
+    cy.on("window:alert", (alertText) => {
+      expect(alertText).to.equal("Please fill out Username and Password.");
     });
   }
 
