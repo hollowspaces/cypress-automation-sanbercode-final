@@ -3,10 +3,10 @@ const homePage = require("../support/pages/home-page/homePage");
 describe("Login", () => {
   beforeEach(() => {
     homePage.goToHomePage();
+    homePage.verifyHomePageAppears();
   });
 
   it("should successfully login with valid credentials", () => {
-    homePage.verifyHomePageAppears();
     homePage.clickLoginMenu();
     homePage.verifyLoginModalAppears();
     homePage.fillLoginUsername("testpuji");
@@ -29,26 +29,18 @@ describe("Login", () => {
   it("should fail to login with invalid username", () => {
     homePage.clickLoginMenu();
     homePage.verifyLoginModalAppears();
-    homePage.fillLoginUsername("testpujii");
+    homePage.fillLoginUsername("testpujiii");
     homePage.fillLoginPassword("testpuji123");
     homePage.clickLoginBtn();
     homePage.verifyWrongUsername();
   });
 
-    it("should fail to login with empty fields", () => {
-      // Verify homepage
-      // ...code
-      // Click login menu
-      // ...code
-      // Verify modal appears
-      // ...code
-      // Fill in the username field
-      // ...code
-      // Fill in the password field
-      // ...code
-      // Click login button
-      // ...code
-      // Verify error alert message
-      // ...code
-    });
+  it("should fail to login with empty fields", () => {
+    homePage.clickLoginMenu();
+    homePage.verifyLoginModalAppears();
+    homePage.fillLoginUsername("testpujiii");
+    homePage.fillLoginPassword("testpuji123");
+    homePage.clickLoginBtn();
+    homePage.handlingEmptyUsernameAndPasswords();
+  });
 });
