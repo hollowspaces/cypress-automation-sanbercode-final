@@ -1,19 +1,11 @@
-function generateRandomString(length) {
-  const characters =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  let result = "";
-  for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * characters.length);
-    result += characters.charAt(randomIndex);
-  }
-  return result;
-}
+const { faker } = require("@faker-js/faker");
 
+// Function to generate random user data
 function randomizeUserForSignup() {
-  // Membuat username dan password random
-  const username = `user_${generateRandomString(8)}`;
-  const password = `pass_${generateRandomString(10)}`;
-  return { username, password };
+  return {
+    username: faker.internet.userName(),
+    password: faker.internet.password(),
+  };
 }
 
-module.exports = randomizeUserForSignup;
+module.exports = { randomizeUserForSignup };

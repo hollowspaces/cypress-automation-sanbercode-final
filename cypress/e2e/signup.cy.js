@@ -1,17 +1,23 @@
 const existUserForSignup = require("../support/utils/existUserForSignup");
 const homePage = require("../support/pages/home-page/homePage");
-const randomizeUserForSignup = require("../support/utils/randomizeUserForSignup");
+const {
+  randomizeUserForSignup,
+} = require("../support/utils/randomizeUserForSignup");
 
 describe("Sign Up", () => {
-  it("with valid data", () => {
-    const { username, password } = randomizeUserForSignup();
-
+  beforeEach(() => {
     homePage.goToHomePage();
     homePage.verifyHomePageAppears();
+  });
+
+  it("with valid data", () => {
+    // const { username, password } = randomizeUserForSignup();
+
+    const user = randomizeUserForSignup();
     homePage.clickSignUpMenu();
     homePage.verifyModalAppears();
-    homePage.fillUsername(username);
-    homePage.fillPassword(password);
+    homePage.fillUsername(user.username);
+    homePage.fillPassword(user.password);
     homePage.clickSignUpBtn();
     homePage.verifyAlertSignUpSuccess();
   });
@@ -19,8 +25,6 @@ describe("Sign Up", () => {
   it("with invalid data", () => {
     const { existUsername, existUserPass } = existUserForSignup();
 
-    homePage.goToHomePage();
-    homePage.verifyHomePageAppears();
     homePage.clickSignUpMenu();
     homePage.verifyModalAppears();
     homePage.fillUsername(existUsername);
@@ -30,8 +34,6 @@ describe("Sign Up", () => {
   });
 
   it("with empty username and password", () => {
-    homePage.goToHomePage();
-    homePage.verifyHomePageAppears();
     homePage.clickSignUpMenu();
     homePage.verifyModalAppears();
     homePage.clickSignUpBtn();

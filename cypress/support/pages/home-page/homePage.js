@@ -52,12 +52,41 @@ class homePage {
     });
   }
 
+  clickLoginMenu() {
+    cy.xpath(locators.datatestid.loginMenu).click();
+  }
+
+  verifyLoginModalAppears() {
+    cy.xpath(locators.datatestid.loginModal).should("exist");
+    cy.wait(1000);
+  }
+
+  fillLoginUsername(loginUsername) {
+    cy.xpath(locators.datatestid.loginUsernameField, { timeout: 5000 })
+      .should("be.visible")
+      .type(loginUsername, { timeout: 5000 });
+  }
+
+  fillLoginPassword(loginPassword) {
+    cy.xpath(locators.datatestid.loginPasswordField, { timeout: 5000 })
+      .should("be.visible")
+      .type(loginPassword, { timeout: 5000 });
+  }
+
   clickLoginBtn() {
     cy.xpath(locators.datatestid.loginBtn).click();
   }
 
+  verifyLoginSuccess() {
+    cy.xpath(locators.datatestid.nameOfUserTxt).should("be.visible");
+  }
+
   clickLogoutBtn() {
     cy.xpath(locators.datatestid.logoutBtn).click();
+  }
+
+  verifyLogoutSuccess() {
+    cy.xpath(locators.datatestid.nameOfUserTxt).should("not.be.visible");
   }
 }
 
