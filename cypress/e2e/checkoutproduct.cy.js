@@ -1,4 +1,5 @@
 const homePage = require("../support/pages/home-page/homePage");
+const productPage = require("../support/pages/product-page/productPage");
 
 describe("Checkout Product", () => {
   before(() => {
@@ -14,20 +15,12 @@ describe("Checkout Product", () => {
   });
 
   it("should successfully purchased when user place order the product", () => {
-    // Click product on homepage
-    homePage.selectProduct();
-    // Verify product page
-    cy.xpath('//div[@id="more-information"]').should("exist");
+    homePage.selectProduct(); 
+    productPage.verifyProductPage();
+    productPage.clickAddToCartBtn();
+    productPage.verifyProductSucessfullyAdded();
+    productPage.clickCartMenu();
 
-    // Click add to cart in product page
-    cy.xpath('//a[normalize-space()="Add to cart"]').click();
-
-    // Verify alert product successfully added to cart
-    cy.on("window:alert", (alertText) => {
-      expect(alertText).to.equal("Product added.");
-    });
-    // Click cart menu
-    cy.xpath('//a[@id="cartur"]').click();
     // Verify cart page by checking "Products" title / Total text / btn place order
     cy.xpath('//h2[normalize-space()="Total"]').should("be.visible");
     // Click place order btn
