@@ -88,6 +88,12 @@ class homePage {
   verifyLogoutSuccess() {
     cy.xpath(locators.datatestid.nameOfUserTxt).should("not.be.visible");
   }
+
+  verifyWrongPassword() {
+    cy.on("window:alert", (alertText) => {
+      expect(alertText).to.equal("Wrong password.");
+    });
+  }
 }
 
 module.exports = new homePage();
