@@ -15,7 +15,7 @@ class homePage {
 
   verifyModalAppears() {
     cy.xpath(locators.datatestid.signUpModals).should("exist");
-    cy.wait(1000);
+    cy.wait(500);
   }
 
   fillUsername(username) {

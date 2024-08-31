@@ -12,7 +12,7 @@ class cartPage {
 
   verifyPlaceOrderModalAppears() {
     cy.xpath(locators.datatestid.placeOrderModal).should("be.visible");
-    cy.wait(2000);
+    cy.wait(500);
   }
 
   fillName() {
