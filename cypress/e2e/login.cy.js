@@ -24,9 +24,18 @@ describe("Login", () => {
     homePage.fillLoginPassword("testpuji12344578");
     homePage.clickLoginBtn();
     homePage.verifyWrongPassword();
-  });-
+  });
 
-    it("should fail to login with invalid username", () => {
+  it("should fail to login with invalid username", () => {
+    homePage.clickLoginMenu();
+    homePage.verifyLoginModalAppears();
+    homePage.fillLoginUsername("testpujii");
+    homePage.fillLoginPassword("testpuji123");
+    homePage.clickLoginBtn();
+    homePage.verifyWrongUsername();
+  });
+
+    it("should fail to login with empty fields", () => {
       // Verify homepage
       // ...code
       // Click login menu
@@ -42,21 +51,4 @@ describe("Login", () => {
       // Verify error alert message
       // ...code
     });
-
-  //   it("should fail to login with empty fields", () => {
-  //     // Verify homepage
-  //     // ...code
-  //     // Click login menu
-  //     // ...code
-  //     // Verify modal appears
-  //     // ...code
-  //     // Fill in the username field
-  //     // ...code
-  //     // Fill in the password field
-  //     // ...code
-  //     // Click login button
-  //     // ...code
-  //     // Verify error alert message
-  //     // ...code
-  //   });
 });

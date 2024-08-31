@@ -94,6 +94,12 @@ class homePage {
       expect(alertText).to.equal("Wrong password.");
     });
   }
+
+  verifyWrongUsername() {
+    cy.on("window:alert", (alertText) => {
+      expect(alertText).to.equal("User does not exist.");
+    });
+  }
 }
 
 module.exports = new homePage();
