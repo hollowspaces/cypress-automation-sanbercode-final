@@ -38,8 +38,6 @@ describe("Login", () => {
   it("should fail to login with empty fields", () => {
     homePage.clickLoginMenu();
     homePage.verifyLoginModalAppears();
-    homePage.fillLoginUsername("testpujiii");
-    homePage.fillLoginPassword("testpuji123");
     homePage.clickLoginBtn();
     homePage.handlingEmptyUsernameAndPasswords();
   });
